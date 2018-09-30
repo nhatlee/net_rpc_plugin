@@ -16,9 +16,10 @@ type Plugin struct {
 
 func (p Plugin) Revert(arg string, ret *string) error {
 	fmt.Println("Plugin: revert")
+
 	l := len(arg)
 	r := make([]byte, l)
-	for i:= 0l i < l; i++ {
+	for i := 0; i < l; i++ {
 		r[i] = arg[l-1-i]
 	}
 	*ret = string(r)
@@ -60,7 +61,7 @@ func app() {
 	time.Sleep(1 * time.Second)
 
 	fmt.Println("App: registering RPC client")
-	
+
 	client, err := rpc.Dial("tcp", "127.0.0.1:55555")
 	if err != nil {
 		log.Fatal("Cannot create RPC client: ", err)
@@ -72,7 +73,7 @@ func app() {
 	if err != nil {
 		log.Fatal("Error calling Revert: ", err)
 	}
-	fmt.Println("App: revert result:", reverse)	
+	fmt.Println("App: revert result:", reverse)
 	fmt.Println("App: stopping the plugin")
 	var n int
 	client.Call("Plugin.Exit", 0, &n)
