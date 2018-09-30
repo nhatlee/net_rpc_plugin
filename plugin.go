@@ -23,6 +23,7 @@ func (p Plugin) Revert(arg string, ret *string) error {
 		r[i] = arg[l-1-i]
 	}
 	*ret = string(r)
+	return nil
 }
 
 func (p Plugin) Exit(arg int, ret *int) error {
@@ -43,6 +44,7 @@ func startPlugin() {
 	if err != nil {
 		log.Fatal("Cannot listen: ", err)
 	}
+
 	fmt.Println("Plugin: accepting requests")
 	rpc.Accept(p.listener)
 }
