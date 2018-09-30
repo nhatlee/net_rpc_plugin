@@ -52,7 +52,7 @@ func startPlugin() {
 func app() {
 	fmt.Println("App start")
 
-	p := exec.Command("/.plugins", true)
+	p := exec.Command("/.plugins", "true")
 	p.Stdout = os.Stdout
 	p.Stderr = os.Stderr
 
@@ -84,7 +84,7 @@ func app() {
 }
 
 func main() {
-	if len(os.Args) > 1 && os.Args[1] == true {
+	if len(os.Args) > 1 && os.Args[1] == "true" {
 		startPlugin()
 		time.AfterFunc(10*time.Second, func() {
 			fmt.Println("Plugin: idle timeout - exiting")
