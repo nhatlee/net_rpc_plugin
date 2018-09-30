@@ -27,7 +27,7 @@ func (p Plugin) Revert(arg string, ret *string) error {
 }
 
 func (p Plugin) Exit(arg int, ret *int) error {
-	fmt.Println("PluginL Done.")
+	fmt.Println("Plugin Done.")
 	os.Exit(0)
 	return nil
 }
@@ -52,7 +52,7 @@ func startPlugin() {
 func app() {
 	fmt.Println("App start")
 
-	p := exec.Command("/.plugins", "true")
+	p := exec.Command("/.net_rpc_plugin", "true")
 	p.Stdout = os.Stdout
 	p.Stderr = os.Stderr
 
